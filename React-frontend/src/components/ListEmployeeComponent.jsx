@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import EmployeeService from '../services/EmployeeService'
 
 class ListEmployeeComponent extends Component {
     constructor(props) {
@@ -9,7 +10,13 @@ class ListEmployeeComponent extends Component {
         }
     }
 
-
+    //Component get mounted as soon as component is mounted
+    //Stored response data inside of the array
+    componentDidMount(){
+        EmployeeService.getEmployees().then((res) => {
+            this.setState({ employees: res.data})
+        })
+    }
     render() {
         return (
             <div>
