@@ -2,13 +2,18 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListEmployeeComponent from './components/ListEmployeeComponent';
+import HeaderComponent from './components/HeaderComponent';
+import FooterComponent from './components/FooterComponent';
 
-{/* container - bootstrap css class) */}
+{/* container - bootstrap css class) */ }
 function App() {
   return (
-    <div className="container">
-      <ListEmployeeComponent />
-
+    <div>
+      <HeaderComponent />
+      <div className="container">
+        <ListEmployeeComponent />
+      </div>
+      <FooterComponent />
     </div>
   );
 }
