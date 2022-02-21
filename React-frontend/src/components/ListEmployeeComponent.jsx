@@ -8,45 +8,56 @@ class ListEmployeeComponent extends Component {
         this.state = {
             employees: [] //Array of employees, call restAPI
         }
+        this.addEmployee = this.addEmployee.bind(this);
+
     }
 
     //Component get mounted as soon as component is mounted
     //Stored response data inside of the array
-    componentDidMount(){
+    componentDidMount() {
         EmployeeService.getEmployees().then((res) => {
-            this.setState({ employees: res.data})
+            this.setState({ employees: res.data })
         })
     }
+
+    //Route - after you click, this is where you go
+    addEmployee(){
+        this.props.history.push('/add-employee');
+    }
+
     render() {
         return (
             <div>
                 <h2 className="text-center">Employees List</h2>
-                <div className = "row">
-                        <table className = "table table-striped table-bordered">
+                <div className="row">
+                    <button className="btn btn-primary" onClick={this.addEmployee}>Add employee</button>
+                </div>
+                <div className="row">
+                    <table className="table table-striped table-bordered">
 
-                            <thead>
-                                <tr>
-                                    <th> Employee First Name</th>
-                                    <th> Employee Last Name</th>
-                                    <th> Employee Email Id</th>
-                                    <th> Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    this.state.employees.map(
-                                        employee => 
-                                        <tr key = {employee.id}>
-                                             <td> { employee.firstName} </td>   
-                                             <td> {employee.lastName}</td>
-                                             <td> {employee.emailId}</td>
+                        <thead>
+                            <tr>
+                                <th> Employee First Name</th>
+                                <th> Employee Last Name</th>
+                                <th> Employee Email Id</th>
+                                <th> Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.state.employees.map(
+                                    employee =>
+                                        <tr key={employee.id}>
+                                            <td> {employee.firstName} </td>
+                                            <td> {employee.lastName}</td>
+                                            <td> {employee.emailId}</td>
                                         </tr>
-                                    )
-                                }
-                            </tbody>
-                        </table>
+                                )
+                            }
+                        </tbody>
+                    </table>
 
-                 </div>
+                </div>
 
 
             </div>

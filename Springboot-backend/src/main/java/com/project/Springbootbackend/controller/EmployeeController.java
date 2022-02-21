@@ -4,10 +4,7 @@ package com.project.Springbootbackend.controller;
 import com.project.Springbootbackend.model.Employee;
 import com.project.Springbootbackend.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,4 +22,12 @@ public class EmployeeController {
         return employeeRepository.findAll();
     }
 
+    //(C)RUD
+    @PostMapping("/employees")
+    public Employee createEmployee(Employee employee){
+        return employeeRepository.save(employee);
+    }
+
 }
+
+
