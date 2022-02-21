@@ -14,8 +14,8 @@ function App() {
           <div className="container">
             <Switch>
             <Route path = "/" exact component = {ListEmployeeComponent}></Route>
-            <Route path = "/employees" exact component = {ListEmployeeComponent}></Route>
-            <Route path = "/add-employee" exact component = {CreateEmployeeComponent}></Route>
+            <Route path = "/employees" component = {ListEmployeeComponent}></Route>
+            <Route path = "/add-employee" component = {CreateEmployeeComponent}></Route>
               
             </Switch>
           </div>
