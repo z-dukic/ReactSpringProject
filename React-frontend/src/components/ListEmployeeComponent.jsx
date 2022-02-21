@@ -9,6 +9,12 @@ class ListEmployeeComponent extends Component {
             employees: [] //Array of employees, call restAPI
         }
         this.addEmployee = this.addEmployee.bind(this);
+        this.editEmployee = this.editEmployee.bind(this);
+
+    }
+
+    editEmployee(id) {
+        this.props.history.push(`/update-employee/${id}`);
 
     }
 
@@ -21,7 +27,7 @@ class ListEmployeeComponent extends Component {
     }
 
     //Route - after you click, this is where you go
-    addEmployee(){
+    addEmployee() {
         this.props.history.push('/add-employee');
     }
 
@@ -51,6 +57,9 @@ class ListEmployeeComponent extends Component {
                                             <td> {employee.firstName} </td>
                                             <td> {employee.lastName}</td>
                                             <td> {employee.emailId}</td>
+                                            <td>
+                                                <button className="btn btn-info" onClick={() => this.editEmployee(employee.id)}>Update</button>
+                                            </td>
                                         </tr>
                                 )
                             }
