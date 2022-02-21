@@ -35,7 +35,7 @@ class ListEmployeeComponent extends Component {
         return (
             <div>
                 <h2 className="text-center">Employees List</h2>
-                <div className="row">
+                <div className="row" className="w-25 p-3">
                     <button className="btn btn-primary" onClick={this.addEmployee}>Add employee</button>
                 </div>
                 <div className="row">
