@@ -1,12 +1,10 @@
 import React from "react";
 import axios from "axios";
 
-
-
 //Same URL you put in java
-//const EMPLOYEE_API_BASE_URL = "http://localhost:8080/api/v1/employees";
-//const EMPLOYEE_API_BASE_URL = "https://anypoint.mulesoft.com/mocking/api/v1/links/d4794ced-cb84-4673-8089-7618277d3cba/employees";
-const EMPLOYEE_API_BASE_URL = "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/de8feddc-8a34-4393-8449-bce00a2ce605/reactapi/1.0.4/m/employees";
+//const EMPLOYEE_API_BASE_URL = "http://localhost:8080/api/v1/";
+
+const EMPLOYEE_API_BASE_URL = "https://anypoint.mulesoft.com/mocking/api/v1/sources/vcs/projects/96dd3bcc-eef7-486d-986c-8c8669dd2f54/master/m/employees";
 
 class EmployeeService {
 
@@ -15,6 +13,8 @@ class EmployeeService {
         return axios.get(EMPLOYEE_API_BASE_URL);
     }
 
+    /*
+    
     createEmployee(employee) {
         return axios.post(EMPLOYEE_API_BASE_URL, employee);
     }
@@ -31,6 +31,7 @@ class EmployeeService {
         return axios.delete(EMPLOYEE_API_BASE_URL + '/' + employeeId);
     }
 
+    */
 
 
 

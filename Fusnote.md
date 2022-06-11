@@ -1,0 +1,1 @@
+Stao sam na 3-3. Napravio sam raml i daje neke podatke. Trebam napraviti lokalno.	
