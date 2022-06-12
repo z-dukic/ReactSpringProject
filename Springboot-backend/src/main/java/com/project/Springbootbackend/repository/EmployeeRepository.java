@@ -16,9 +16,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     Employee findByEmail(String email); //ako ima dva marka, error 500
 
 
-    @Query("SELECT e FROM Employee e")
-    List <Employee> findAllEmployees();
-
 
 
 

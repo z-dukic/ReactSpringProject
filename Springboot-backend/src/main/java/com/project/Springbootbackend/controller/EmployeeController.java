@@ -29,13 +29,6 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @RequestMapping("/employeez")
-    void findAllEmployees(){
-        List<Employee> result = employeeRepository.findAllEmployees();
-
-    }
-
-
     //http://localhost:8080/api/v1/employee
     //Vrati JSON s tim podacima
     @RequestMapping("/employee")
