@@ -10,6 +10,8 @@ public class SpringbootBackendApplication {
 		SpringApplication.run(SpringbootBackendApplication.class, args);
 
         System.out.println("Hello world");
+
+
 	}
 
 }

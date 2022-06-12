@@ -23,24 +23,24 @@ import java.util.Map;
 @RequestMapping("/api/v1/")
 public class EmployeeController {
 
+
+    //Dep. injection
     @Autowired
     private EmployeeRepository employeeRepository;
 
     @Autowired
     private EmployeeService employeeService;
 
-    //http://localhost:8080/api/v1/employee
-    //Vrati JSON s tim podacima
-    @RequestMapping("/employee")
-    public List<Employee> getAnEmployee(){
-        return Arrays.asList(
-            new Employee(10, "pero","pero", "pero"),
-            new Employee(11, "marko","marko", "marko"),
-            new Employee(12, "ivan","ivan", "ivan")
-        );
+
+    //http://localhost:8080/api/v1/employeez
+    //Vrati JSON s tim podacima getAllEmp metoda (van SQLa)
+    @RequestMapping("/employeez")
+    public List<Employee> getAllEmp(){
+        return employeeService.getAllEmp();
     }
 
     //RequestMapping je za metode, a GetMapping je za metode
+    //RequestMapping nema provjeravanja SQL-a, samo metode
 
     //To do da možeš dobiti više ljudi s jednim imenom
     //Problem je što vraća samo unique. Ako postoje dva marka onda će biti status 500
@@ -57,6 +57,16 @@ public class EmployeeController {
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
+
+    //json za post request
+    /*         {
+        "id": 5,
+        "firstName": "pero",
+        "lastName": "pero",
+        "email": "pero"
+        }
+
+     */
 
     // create employee rest api
     @PostMapping("/employees")

@@ -1,0 +1,5 @@
+What have I learned
+
+#error: release version 18 not supported
+#Language level is invalid or missing in pom.xml. Current project JDK is 17. Specify language level in Springboot-backend
+You need to update module SDK into version 18. File-> Project Structure -> Dependencies -> change into java18
