@@ -6,14 +6,10 @@ import com.project.Springbootbackend.model.Employee;
 import com.project.Springbootbackend.repository.EmployeeRepository;
 import com.project.Springbootbackend.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,24 +28,39 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
 
-    //http://localhost:8080/api/v1/employeez
-    //Vrati JSON s tim podacima getAllEmp metoda (van SQLa)
-    @RequestMapping("/employeez")
-    public List<Employee> getAllEmp(){
-        return employeeService.getAllEmp();
+    //Pronađi sve preko querya
+    @GetMapping("/employees/test")
+    public ResponseEntity<List<Employee>> findAllTesting() {
+        return ResponseEntity.ok().body(employeeRepository.findAllTesting());
     }
 
-    //RequestMapping je za metode, a GetMapping je za metode
-    //RequestMapping nema provjeravanja SQL-a, samo metode
 
     //To do da možeš dobiti više ljudi s jednim imenom
     //Problem je što vraća samo unique. Ako postoje dva marka onda će biti status 500
     //http://localhost:8080/api/v1/employees/email?email=marko
-    // get employee by name
-    @GetMapping("/employees/email")
-    public ResponseEntity<Employee>findByEmail(@RequestParam String email){
-        return new ResponseEntity<Employee> (employeeRepository.findByEmail(email), HttpStatus.OK);
+    // get employee by mail
 
+    //vrati više usera odjednom
+    @GetMapping("/employees/email1")
+    public ResponseEntity<List<Employee>> findAllByEmail(@RequestParam String email) {
+        return ResponseEntity.ok().body(employeeRepository.findAllByEmail(email));
+    }
+
+
+    //vrati jednog usera, ako ima više, error
+    @GetMapping("/employees/email")
+    public ResponseEntity<Employee>findByEmail(@RequestParam String email) {
+        return new ResponseEntity<Employee>(employeeRepository.findByEmail(email), HttpStatus.OK);
+    }
+
+
+    //RequestMapping je za metode, a GetMapping je za metode
+    //RequestMapping nema provjeravanja SQL-a, samo metode
+    //http://localhost:8080/api/v1/employeez
+    //Vrati JSON s tim podacima getAllEmp metoda (van SQLa)
+    @RequestMapping("/employeez")
+    public List<Employee> getAllEmp() {
+        return employeeService.getAllEmp();
     }
 
     //all employees
@@ -79,7 +90,7 @@ public class EmployeeController {
     @GetMapping("/employees/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
         Employee employee = employeeRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
         return ResponseEntity.ok(employee);
     }
 
@@ -88,7 +99,7 @@ public class EmployeeController {
     @PutMapping("/employees/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails) {
         Employee employee = employeeRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
 
         employee.setFirstName(employeeDetails.getFirstName());
         employee.setLastName(employeeDetails.getLastName());
@@ -103,7 +114,7 @@ public class EmployeeController {
     @DeleteMapping("/employees/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id) {
         Employee employee = employeeRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
 
         employeeRepository.delete(employee);
         Map<String, Boolean> response = new HashMap<>();

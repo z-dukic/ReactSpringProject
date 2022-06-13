@@ -13,7 +13,12 @@ import java.util.List;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-
     Employee findByEmail(String email); //ako ima dva marka, error 500
+
+    List<Employee> findAllByEmail(String email); //pronađe sve emailove
+
+    //native query
+    @Query(value = "SELECT * FROM employees ", nativeQuery = true)
+    List<Employee> findAllTesting();
 
 }
