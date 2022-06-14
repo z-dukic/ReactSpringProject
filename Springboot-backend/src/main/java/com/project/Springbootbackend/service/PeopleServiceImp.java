@@ -5,6 +5,7 @@ import com.project.Springbootbackend.repository.PeopleRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -21,6 +22,12 @@ public class PeopleServiceImp implements PeopleService {
         List<People> people = peopleRepository.findAllByName(name);
         return people;
     }
+
+    @Override
+    public Optional<People> findById(Integer id) {
+        return peopleRepository.findById(id);
+    }
+
 
 }
 

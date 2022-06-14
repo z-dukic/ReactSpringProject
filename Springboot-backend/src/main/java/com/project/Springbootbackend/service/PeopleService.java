@@ -8,5 +8,7 @@ import java.util.Optional;
 public interface PeopleService {
     List<People> findAllByName(String name);
 
+    Optional<People> findById(Integer id);
+
 }
 

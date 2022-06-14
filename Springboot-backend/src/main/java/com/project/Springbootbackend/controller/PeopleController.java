@@ -1,14 +1,13 @@
 package com.project.Springbootbackend.controller;
 
+import com.project.Springbootbackend.exception.ResourceNotFoundException;
 import com.project.Springbootbackend.model.People;
 import com.project.Springbootbackend.service.PeopleService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/people")
@@ -26,5 +25,22 @@ public class PeopleController {
         return ResponseEntity.ok().body(peopleService.findAllByName(name));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<People>> findById(@PathVariable Integer id) {
+
+        People people = peopleService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Person not exist with id :" + id));
+
+        return ResponseEntity.ok().body(peopleService.findById(id));
+    }
 
 }
+
+/*
+
+    @GetMapping("/employees/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+        return ResponseEntity.ok(employee);
+    }
+ */
