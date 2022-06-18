@@ -1,0 +1,16 @@
+/*
+Problemi:
+Ako staviš id 2, on ga pregazi (ako ga ima u bazi)
+Ako makneš id, on ga ignorira i stavi sve null
+Možeš dodati bilo kojeg usera, ne mora biti u bazi
+Možeš dodati bilo koju rolu hoćeš
+*/
+{
+  "roleName": "Doktor znanosti",
+  "employee": {
+    "id": 2,
+    "firstName": "ante",
+    "lastName": "ante",
+    "email": "ante"
+  }
+}

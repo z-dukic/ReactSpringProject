@@ -17,3 +17,14 @@ Go into project frontend, start react by using "npm start"
 Go to localhost:3000 and track your employees :)
 
 ![alt text](https://github.com/z-dukic/ReactSpringProject/blob/main/screenshot.png)
+
+## The app contains:
+1. Employee CRUD
+2. Role as example of ORM
+3. Spring Boot architecture
+
+
+Plans to improve:
+Add Spring Security to app(login, content restrictions)
+Expand ORM application
+Create reports, timesheets etc.

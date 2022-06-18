@@ -13,30 +13,54 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000") // You get an error bcs of CORS, you have to add localhost here
 @RestController
-@RequestMapping("/api/v2/")
+@RequestMapping("/api/v1/roles")
 public class RoleController {
 
     @Autowired
     RoleRepository roleRepository;
 
     //all roles
-    @GetMapping("/roles")
+    @GetMapping()
     public List<Role> getAllRoles() {
         return roleRepository.findAll();
     }
 
     //get all people with that role
-    public List<Role> getPeoplePerRole(){
+    public List<Role> getPeoplePerRole() {
         return roleRepository.findAll();
     }
 
 
     // get employee by id
-    @GetMapping("/roles/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Role> getRoleById(@PathVariable Long id) {
         Role role = roleRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Nobody in company with that role exist with id :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Nobody in company with that role exist with id :" + id));
         return ResponseEntity.ok(role);
     }
 
+    /*
+        http://localhost:8080/api/v1/roles/new
+
+        {
+        "id": 4,
+        "roleName": "Scrum master",
+        "employee": {
+            "id": 2
+        }
+    }
+
+    Problemi:
+    Ako staviš id 2, on ga pregazi (ako ga ima u bazi)
+    Ako makneš id, on ga ignorira i stavi sve null
+    Možeš dodati bilo kojeg usera
+     */
+    @PostMapping("/new")
+    public Role addToRole(@RequestBody Role role){
+        return roleRepository.save(role);
+    }
+
 }
+
+
+
