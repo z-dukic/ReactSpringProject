@@ -8,8 +8,11 @@ import com.project.Springbootbackend.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,13 +22,29 @@ import java.util.Map;
 @RequestMapping("/api/v1/")
 public class EmployeeController {
 
-
     //Dep. injection
     @Autowired
     private EmployeeRepository employeeRepository;
 
     @Autowired
     private EmployeeService employeeService;
+
+    //Redirect to new url
+    @RequestMapping("/to-be-redirected")
+    public RedirectView localRedirect() {
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://www.google.com");
+        return redirectView;
+    }
+
+    //Security
+    @GetMapping("/security")
+    public String home(Model model, HttpServletRequest request) {
+        model.addAttribute("employees", employeeRepository.findAll());
+        model.addAttribute("isManager", request.isUserInRole("ROLE_MANAGER"));
+        model.addAttribute("newEmployee", new Employee());
+        return "Hello world";
+    }
 
 
     //Pronađi sve preko querya
