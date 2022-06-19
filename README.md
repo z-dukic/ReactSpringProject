@@ -22,9 +22,11 @@ Go to localhost:3000 and track your employees :)
 1. Employee CRUD
 2. Role as example of ORM
 3. Spring Boot architecture
+4. Added spring security
 
 
 Plans to improve:
-Add Spring Security to app(login, content restrictions)
+Write tests
+Improve Spring security (send confirmation e-mails etc)
 Expand ORM application
 Create reports, timesheets etc.
