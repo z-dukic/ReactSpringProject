@@ -23,10 +23,12 @@ Go to localhost:3000 and track your employees :)
 2. Role as example of ORM
 3. Spring Boot architecture
 4. Added spring security
-
+5. Query using JPA
+6. Query using sql query
 
 Plans to improve:
 Write tests
 Improve Spring security (send confirmation e-mails etc)
 Expand ORM application
 Create reports, timesheets etc.
+Use JBDC 
