@@ -32,3 +32,4 @@ Improve Spring security (send confirmation e-mails etc)
 Expand ORM application
 Create reports, timesheets etc.
 Use JBDC 
+Search engine
