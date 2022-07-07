@@ -22,7 +22,7 @@ public class PeopleController {
 
     @GetMapping("/name")
     public ResponseEntity<List<People>> findAllByName(@RequestParam String name) {
-
+        System.out.println("/GET controller findAllByName");
         return ResponseEntity.ok().body(people.findAllByName(name));
     }
 

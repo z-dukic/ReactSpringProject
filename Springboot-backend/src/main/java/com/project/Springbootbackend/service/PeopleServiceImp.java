@@ -20,6 +20,7 @@ public class PeopleServiceImp implements PeopleService {
     @Override
     public List<People> findAllByName(String name) {
         List<People> people = peopleRepository.findAllByName(name);
+        System.out.println("/GET findAllByName implementation");
         return people;
     }
 
