@@ -25,11 +25,6 @@ public class RoleController {
         return roleRepository.findAll();
     }
 
-    //get all people with that role
-    public List<Role> getPeoplePerRole() {
-        return roleRepository.findAll();
-    }
-
 
     // get employee by id
     @GetMapping("/{id}")
