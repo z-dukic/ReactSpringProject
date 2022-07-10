@@ -27,9 +27,10 @@ Go to localhost:3000 and track your employees :)
 6. Query using sql query
 
 Plans to improve:
-Write tests
-Improve Spring security (send confirmation e-mails etc)
-Expand ORM application
-Create reports, timesheets etc.
-Use JBDC 
-Search engine
+1. Write tests
+2. Improve Spring security (send confirmation e-mails etc)
+3. Expand ORM application
+4. Create reports, timesheets etc.
+5. Use JBDC 
+6. Search engine
+7. Web socket
